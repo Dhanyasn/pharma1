@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			<div class="forms">
+			<form method="post" >
+				<h4>Products list</h4>
+				<label >product id</label><input type="text" style="margin-left: 50px" name="products_id" maxlength="5" autocomplete="off" required="required">
+
+				<label style="margin-left: 130px" > product name</label><input type="text" style="margin-left: 60px" name="products_name" maxlength="30" autocomplete="off" required="required"><br>
+
+				<label >  company id</label><input type="text" style="margin-left: 37px" name="company_id" maxlength="5" autocomplete="off" required="required">
+
+				
+
+				<label style="margin-left: 130px" >product quantity</label><input type="number" style="margin-left: 40px" name="products_no" required="required"><br>
+
+				<label>product price</label><input type="number" style="margin-left: 30px" name="products_price" required="required">
+
+				<label style="margin-left: 130px">product weight</label><input style="margin-left: 50px" type="text" name="products_weight" autocomplete="off" required="required"> ><br>
+
+				<label>product use</label><input  style="margin-left: 40px" type="text" name="products_use" autocomplete="off" required="required">>
+
+				<label style="margin-left: 125px">product composition</label><input type="text" style="margin-left: 10px" name="products_composition" autocomplete="off" required="required">><br><br>
+
+				<label>product type</label>    <label style="margin-left: 340px">product state</label><br>
+				<label>medicine</label><input style="margin-left: 5px" type="radio" name="products_type" value="medicine" >
+				<label style="margin-left: 10px">cosmetics</label><input type="radio" style="margin-left: 5px; border-radius: 5px;" name="products_type" value="cosmetics">
+				<label style="margin-left: 10px">healthcare</label><input type="radio" style="margin-left: 5px" name="products_type" value="healthcare">
+
+				
+				<label style="margin-left: 150px">solid</label><input style="margin-left: 5px" type="radio" name="products_state" value="solid">
+				<label style="margin-left: 10px" >liquid</label><input style="margin-left: 5px" type="radio" name="products_state" value="liquid">
+				<label style="margin-left: 10px">gel</label><input style="margin-left: 5px" type="radio" name="products_state" value="gel">
+				<label style="margin-left: 10px">syrup</label><input style="margin-left: 5px" type="radio" name="products_state" value="syrup">
+				<label style="margin-left: 10px">tablet</label><input style="margin-left: 5px" type="radio" name="products_state" value="tablet">
+				<label style="margin-left: 10px">powder</label><input  style="margin-left: 5px" type="radio" name="products_state" value="powder"><br><br>
+
+				<label style="margin-left: 10px">product size</label>  	<label style="margin-left: 340px">product ayur</label><br>
+				<label style="margin-left: 10px">large</label><input style="margin-left: 5px" type="radio" name="products_size" value="large">
+				<label style="margin-left: 10px">short</label><input style="margin-left: 5px" type="radio" name="products_size" value ="short">
+				<label style="margin-left: 10px">medium</label><input style="margin-left: 5px" type="radio" name="products_size" value="medium">
+
+			
+				<label style="margin-left: 225px">yes</label><input style="margin-left: 5px" type="radio" name="products_ayur" value="yes">
+				<label style="margin-left: 10px">no</label><input style="margin-left: 5px" type="radio" name="products_ayur" value="no" >
+
+				
+
+				<button style="margin-left: 340px;margin-top: 10px;margin-bottom:0;padding-bottom: 0px" type="submit" >submit</button>
+			</form>
+	</div>
+			<div class="tables">
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							<th scope="col">products_no</th>
+							<th scope="col">products_price</th>
+							<th scope="col">products_type</th>
+							<th scope="col">products_state</th>
+							<th scope="col">products_size</th>
+							<th scope="col">products_weight</th>
+							<th scope="col">products_use</th>
+							<th scope="col">products_composition</th>
+							<th scope="col">products_ayur</th>
+							<th scope="col">company_id</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% products.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							<td><%=item.products_no %></td>
+							<td><%=item.products_price%></td>
+							<td><%=item.products_type%></td>
+							<td><%=item.products_state%></td>
+							<td><%=item.products_size%></td>
+							<td><%=item.products_weight%></td>
+							<td><%=item.products_use%></td>
+							<td><%=item.products_composition%></td>
+							<td><%=item.products_ayur%></td>
+							<td><%=item.company_id%></td>
+							<td><a style="text-decoration-line: none;color:#54e346"href="/productsEdit/<%= item.products_id%>" >edit</a></td>
+							<td><a style="text-decoration-line: none;color:#54e346"href="/products/<%= item.products_id%>" onClick="return confirm('are you sure to delete')">delete</a></td>
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

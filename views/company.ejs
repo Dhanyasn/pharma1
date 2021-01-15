@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			<div class="forms">
+				<h4>company details</h4>
+				<form method="post"  >
+					<label>company</label>
+					<label >  id</label><input type="text"  style="margin-left: 10px" name="company_id" maxlength="5" required="required" >
+					<label style="margin-left: 90px" >  name</label><input type="text" style="margin-left: 10px"   name="company_name" maxlength="30" required="required"><br><br>
+					<label> adress</label><input type="text" style="margin-left: 50px"  name="company_address" maxlength="30" required="required">
+					<label style="margin-left: 90px" >email</label><input type="text" style="margin-left: 10px"  name="company_email"  maxlength="30" required="required">
+					<button type="submit" >submit</button>
+				</form>
+			</div >
+			<div class="tables">
+
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">company_id</th>
+							<th scope="col">company_name</th>
+							<th scope="col">company_adress</th>
+							<th scope="col">company_email</th>
+							<th scope="col">Edit</th>
+							<th scope="col">delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% company.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td ><%=item.company_id %> </td>
+							
+							<td ><%=item.company_name %></td>
+							<td><%=item.company_address %></td>
+							<td><%=item.company_email%></td>
+							<td><a style="text-decoration-line: none;color:#54e346"href="/companyEdit/<%= item.company_id%>">edit</a></td>
+							<td><a style="text-decoration-line: none;color:#54e346" href="/company/<%= item.company_id%>" onClick="return confirm('are you sure to delete')">delete</a></td>
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	
+</html>

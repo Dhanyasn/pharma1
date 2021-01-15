@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+</head>
+<body>
+<%-include("header")-%>
+<div class="informationdiv">
+	<div class="forms">
+				<h4>fever</h4>
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							
+							<th scope="col">products_use</th>
+							
+						
+						</tr>
+					</thead>
+					<tbody>
+						<% stocks.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							
+							<td><%=item.products_use%></td>
+							
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table><br>
+				<h4>cough</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							
+							<th scope="col">products_use</th>
+							
+						
+						</tr>
+					</thead>
+					<tbody>
+						<% cough.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							
+							<td><%=item.products_use%></td>
+							
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table><br>
+				<h4>pain relief</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							
+							<th scope="col">products_use</th>
+							
+						
+						</tr>
+					</thead>
+					<tbody>
+						<% pain_relief.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							
+							<td><%=item.products_use%></td>
+							
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table><br>
+				<h4>first aid</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							
+							<th scope="col">products_use</th>
+							
+						
+						</tr>
+					</thead>
+					<tbody>
+						<% first_aid.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							
+							<td><%=item.products_use%></td>
+							
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table><br>
+				<h4>injections</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							
+							<th scope="col">products_use</th>
+							
+						
+						</tr>
+					</thead>
+					<tbody>
+						<% injections.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							
+							<td><%=item.products_use%></td>
+							
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table><br>
+				<h4>syringe</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">products_id</th>
+							<th scope="col">products_name</th>
+							
+							<th scope="col">products_use</th>
+							
+						
+						</tr>
+					</thead>
+					<tbody>
+						<% syringe.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.products_id %> </td>
+							<td><%=item.products_name %></td>
+							
+							<td><%=item.products_use%></td>
+							
+						</tr>
+						<%}); %>
+						
+					</tbody>
+				</table>
+			</div>
+			
+	
+</div>
+</body>
+</html>

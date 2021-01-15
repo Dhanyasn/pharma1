@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+</head>
+<body>
+<%-include("header")-%>
+<div class="informationdiv">
+<%var total=0%>
+<div class="forms">
+	o
+	<h4>invoice</h4>
+</div>
+<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">bill_id</th>
+						<th scope="col">products_id</th>
+						<th scope="col">unit_price</th>
+						<th scope="col">quantity</th>
+						<th scope="col">discount</th>
+						<th scope="col">total</th>
+						<th scope="col">date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% invoice.forEach(function(item){%>
+					<tr>
+						<th scope="row"></th>
+						<td><%=item.bill_id %> </td>
+						<td><%=item.products_id %></td>
+						<td><%=item.unit_price %></td>
+						<td><%=item.quantity %></td>
+						<td><%=item.discount %></td>
+						<td><%=item.total_price %></td>
+						<td><%=item.invoice_date%></td>
+						<%total=Math.round(item.total_price-(item.total_price*item.dicount))+total%>
+					</tr>
+					<%}); %>
+					
+				</tbody>
+			</table>	
+			
+</div>
+</body>
+</html>

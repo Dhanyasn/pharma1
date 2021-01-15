@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			<div class="forms">
+				<form method="post"  >
+					<h4>delivery</h4>
+					<label>delivery id</label><input type="text" style="margin-left:10px" name="deliver_id" maxlength="5" required="required"><br>
+					<label> order_id</label><input type="text" style="margin-left: 15px" name="order_id" maxlength="5" required="required"><br>
+					<label> price</label><input type="number" style="margin-left:  40px" name="total_price" required="required"><br>
+					
+					<button style="margin-top: 10px" type="submit" >submit</button><br>
+				</form>
+			</div >
+			<div class="tables">
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">deliver_id</th>
+							<th scope="col">order_id</th>
+							<th scope="col">total_price</th>
+							<th scope="col">date</th>
+							<th scope="col">edit</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% deliver.forEach(function(item){%>
+						<tr>
+							<th scope="row"></th>
+							<td><%=item.deliver_id %> </td>
+							<td><%=item.order_id %></td>
+							<td><%=item.total_price %></td>
+							<td><%=item.deliver_date%></td>
+							<td><a style="text-decoration-line: none;color:#54e346" href="/deliverEdit/<%= item.deliver_id%>">edit</a></td>
+							<td><a style="text-decoration-line: none;color:#54e346"href="/deliver/<%= item.deliver_id%>" onClick="return confirm('are you sure to delete')">delete
+								
+							</tr>
+							<%}); %>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</body>
+	</html>

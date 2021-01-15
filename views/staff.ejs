@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+    <script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			<div class="forms">
+				<form method="post"  >
+					<h4>staff details</h4>
+					<label> staff id</label><input type="text" style="margin-left: 45px" name="staff_id" maxlength="5" required="required"> >
+					<label style="margin-left: 210px"> staff name</label><input type="text" style="margin-left: 40px" name="staff_name" maxlength="30" required="required">><br>
+					<label> staff adress</label><input type="text" style="margin-left: 10px"  name="staff_address" maxlength="30" required="required">>
+					<label style="margin-left: 215px">staff phone no</label><input type="number" style="margin-left: 10px" name="staff_phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required="required">><br>
+					<button type="submit" style="margin-left: 350px;margin-top: 10px" >submit</button>
+				</form>
+			</div class="table">
+			<div>
+				<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">staff_id</th>
+      <th scope="col">staff_name</th>
+      <th scope="col">staff_adress</th>
+      <th scope="col">staff_phone</th>
+      <th scope="col">edit</th>
+      <th scope="col">delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% staff.forEach(function(item){%>
+    <tr>
+      <th scope="row"></th>
+      <td><%=item.staff_id %> </td>
+      <td><%=item.staff_name %></td>
+      <td><%=item.staff_address %></td>
+      <td><%=item.staff_phone%></td>
+      <td><a href="/staffEdit/<%= item.staff_id%>">edit</a></td>
+       <td><a href="/staff/<%= item.staff_id%>" onClick="return confirm('are you sure to delete')">delete</a>
+    </tr>
+    <%}); %>
+    
+  </tbody>
+</table>
+			</div>
+		</div>
+	</body>
+</html>

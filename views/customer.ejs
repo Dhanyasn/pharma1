@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+    <script src="float-panel.js"></script>
+  </head>
+  <body>
+    <%-include("header")-%>
+    <div class="informationdiv">
+      <div class="forms">
+        <form method="post"  >
+          <h4>Customer information</h4>
+          
+          <label>customer  name</label><input style="margin-left: 10px" type="text"  name="customer_name" maxlength="30" >
+          <label style="margin-left: 200px"> adress</label><input style="margin-left: 10px" type="text"  name="customer_address" maxlength="30"><br>
+          <label>customer phone no</label><input style="margin-left: 50px" type="number"  name="customer_phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+          <label style="margin-left: 200px">member</label><input type="text" style="margin-left: 10px" name="customer_membership" maxlength="10"><br>
+          <button style="margin-left: 350px;margin-top: 10px" type="submit" >submit</button>
+        </form>
+      </div>
+      <div class="tables">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              
+              <th scope="col">customer_name</th>
+              <th scope="col">customer_adress</th>
+              <th scope="col">customer_phone</th>
+              <th scope="col">customer_membership</th>
+              <th scope="col">delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% customer.forEach(function(item){%>
+            <tr>
+              <th scope="row"></th>
+              
+              <td><%=item.customer_name %></td>
+              <td><%=item.customer_address %></td>
+              <td><%=item.customer_phone%></td>
+              <td><%=item.customer_membership%></td>
+              <td><a style="text-decoration-line: none;color:#54e346""  href="/customerEdit/<%= item.customer_phone%>">edit</a></td>
+              <td><a style="text-decoration-line: none;color:#54e346"" href="/customer/<%= item.customer_phone%>" onClick="return confirm('are you sure to delete')">delete</a>
+            </tr>
+            <%}); %>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

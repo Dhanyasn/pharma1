@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+
+<!-- company -->
+			<%if(info=="company"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				<form method="post" action="/companyEdit/<%=item.company_id%>" class="form-group">
+					
+					<label>company</label>
+					<label>  id</label><input type="text" class="form-control" name="company_id" maxlength="5" value="<%=item.company_id%>">
+					<label> adress</label><input type="text" class="form-control" name="company_name" maxlength="30" value="<%=item.company_name%>">
+					<label> adress</label><input type="text" class="form-control" name="company_address" maxlength="30" value="<%=item.company_address%>">
+					<label>email</label><input type="text" class="form-control" name="company_email"  maxlength="30" value="<%=item.company_email%>">
+					<button type="submit" >submit</button>
+					
+				</form>
+				<%}); %>
+			</div >
+			<%}%>
+
+<!-- products -->
+			<%if(info=="products"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				
+				
+				<form method="post" action="/productsEdit/<%=item.products_id%>" class="form-group">
+					
+					<label>  id</label><input type="text" style="margin-left: 40px" name="products_id" maxlength="5" value="<%=item.products_id%>" autocomplete="off">
+
+					<label style="margin-left: 200px">  company id</label><input style="margin-left: 10px" type="text" name="company_id" value="<%=item.company_id%>" maxlength="5" autocomplete="off"><br>
+
+					<label>  name</label><input style="margin-left: 10px" type="text" name="products_name" value="<%=item.products_name%>" maxlength="30" autocomplete="off">
+
+					<label style="margin-left: 200px">number</label><input style="margin-left: 40px" type="number" name="products_no" value="<%=item.products_no%>" ><br>
+
+					<label>price</label><input style="margin-left: 20px" type="number" name="products_price" value="<%=item.products_price%>">
+					
+					<label style="margin-left: 200px">type</label><input type="text" style="margin-left: 65px" name="products_type" value="<%=item.products_type%>" ><br>
+					
+					<label>state</label><input type="text" style="margin-left: 20px" name="products_state" value="<%=item.products_state%>"  >
+					
+					
+					<label style="margin-left: 200px">size</label><input type="text" style="margin-left: 70px"  name="products_size" value="<%=item.products_size%>" ><br>
+					
+					<label>ayur</label><input type="text" style="margin-left: 20px" name="products_ayur" value="<%=item.products_ayur%>" >
+					
+					<label style="margin-left: 200px">weight</label><input type="text" style="margin-left: 50px" name="products_weight" autocomplete="off" value="<%=item.products_weight%>"><br>
+
+					<label>use</label><input type="text" style="margin-left: 25px" name="products_use" autocomplete="off" value="<%=item.products_use%>">
+
+					<label style="margin-left: 200px">composition</label><input type="text" style="margin-left: 10px" name="products_composition" value="<%=item.products_composition%>" autocomplete="off"><br>
+
+					<button type="submit" >submit</button>
+				</form>
+				
+			</form>
+			<%}); %>
+		</div >
+		<%}%>
+
+<!-- customer -->
+		<%if(info=="customer"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				<form method="post" action="/customerEdit/<%=item.customer_phone%>"  class="form-group">
+					
+					<label>customer</label>
+					<label>  phone</label><input style="margin-left: 10px" type="text" class="form-control" name="customer_phone" maxlength="5" value="<%=item.customer_phone%>">
+					<label> name</label><input style="margin-left: 10px" type="text" class="form-control" name="customer_name" maxlength="30" value="<%=item.customer_name%>">
+					<label> adress</label><input style="margin-left: 10px" type="text" class="form-control" name="customer_address" maxlength="30" value="<%=item.customer_address%>">
+					<label>membership</label><input style="margin-left: 10px" type="text" class="form-control" name="customer_membership"  maxlength="30" value="<%=item.customer_membership%>">
+					<button type="submit" >submit</button>
+					
+				</form>
+				<%}); %>
+			</div >
+			<%}%>
+
+<!-- staff -->
+
+
+			<%if(info=="staff"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				<form method="post" action="/staffEdit/<%=item.staff_id%>" class="form-group">
+					
+					<label>staff</label>
+					<label>  id</label><input style="margin-left: 10px" type="text" class="form-control" name="staff_id" maxlength="5" value="<%=item.staff_id%>">
+					<label> name</label><input style="margin-left: 10px" type="text" class="form-control" name="staff_name" maxlength="30" value="<%=item.staff_name%>">
+					<label> adress</label><input style="margin-left: 10px" type="text" class="form-control" name="staff_address" maxlength="30" value="<%=item.staff_address%>">
+					<label>phone no</label><input style="margin-left: 10px" type="number" class="form-control" name="staff_phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" value="<%=item.staff_phone%>">
+					<button type="submit" >submit</button>
+					
+				</form>
+				<%}); %>
+			</div >
+			<%}%>
+
+<!-- order -->
+  <%if(info=="order"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				<form method="post" action="/orderEdit/<%=item.order_id%>"  class="form-group">
+					
+					<label>order</label>
+					<label>  id</label><input style="margin-left: 10px" type="text" class="form-control" name="order_id" maxlength="5" value="<%=item.order_id%>">
+					<label> products_id</label><input style="margin-left: 10px" type="text" class="form-control" name="products_id" maxlength="5" value="<%=item.products_id%>">
+					<label> producs_no</label><input style="margin-left: 10px" type="number" class="form-control" name="products_no" maxlength="30" value="<%=item.products_no%>">
+					
+					<button type="submit" >submit</button>
+					
+				</form>
+				<%}); %>
+			</div >
+			<%}%>
+
+<!-- deliver -->
+<%if(info=="deliver"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				<form method="post" action="/deliverEdit/<%=item.deliver_id%>"  class="form-group">
+					
+					<label>deliver</label>
+					<label>  id</label><input style="margin-left: 10px" type="text" class="form-control" name="deliver_id" maxlength="5" value="<%=item.deliver_id%>">
+					
+					<label> order_id</label><input style="margin-left: 10px" type="text" class="form-control" name="order_id" maxlength="5" value="<%=item.order_id%>">
+
+					<label> price</label><input style="margin-left: 10px" type="number" class="form-control" name="total_price" maxlength="30" value="<%=item.total_price%>">
+					
+					<button type="submit" >submit</button>
+					
+				</form>
+				<%}); %>
+			</div >
+			<%}%>
+<!-- discount -->
+<%if(info=="discount"){%>
+			<div class="forms">
+				<% rs.forEach(function(item){%>
+				<form method="post" action="/discountEdit/<%=item.discount_id%>"  class="form-group">
+					
+					<label>discountr</label>
+					<label>  id</label><input style="margin-left: 10px" type="text" class="form-control" name="discount_id" maxlength="5" value="<%=item.discount_id%>">
+					
+					<label> products_id</label><input style="margin-left: 10px" type="text" class="form-control" name="products_id" maxlength="5" value="<%=item.products_id%>">
+
+					<label>amounte</label><input style="margin-left: 10px" type="number" class="form-control" name="dicount_amount" step="any" maxlength="30" value="<%=item.dicount_amount%>">
+					<label>from</label><input style="margin-left: 10px" type="date" name="discount_from" value="<%=item.discount_from%>">
+					<label>to</label><input style="margin-left: 10px" type="date" name="discount_to" value="<%=item.discount_to%>">
+					<button type="submit" >submit</button>
+					
+				</form>
+				<%}); %>
+			</div >
+			<%}%>
+
+
+	</div>
+</body>
+</html>

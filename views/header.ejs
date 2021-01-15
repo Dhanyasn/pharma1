@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>bypharm</title>
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<nav class="navbar navbar-expand-lg   " style="background-color: black" >
+				<a class="navbar-brand" style="font-size: 40px;font-weight: bolder;color: white" href="/">ByPharm</a>
+				
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto" style="font-weight: bold;">
+						<li class="nav-item active">
+							<a class="nav-link" href="/about" style="color: white">About <span class="sr-only">(current)</span></a>
+						</li>
+						
+						<li class="nav-item active">
+							<div class="dropdown" style="margin-top:10px">
+								<a class="dropbtn" >billing</a>
+								<div class="dropdown-content">
+									<a href="/bill">invoice</a>
+									<a href="/discount">discount</a>
+									<a href="/return">return</a>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item active">
+							<div class="dropdown" style="margin-top:10px">
+								<a class="dropbtn" >info</a>
+								<div class="dropdown-content">
+									<a href="/products">product</a>
+									<a href="/company">company</a>
+									<a href="/customer">customer</a>
+									<a href="/staff">staff</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</nav>
+		</div>
+		
+		<div class="home">
+			<div class="sidebar" id="myHeader" style="margin-top:100px">
+				<div class="sidenav" style="color:#f6830f">
+					
+					<a class="dropdown-btn" style="color:#f6830f"><h6>search by name</h6><i class="fa fa-caret-down"></i></a>
+					<div class="dropdown-container">
+						<a href="/search/byNameComposition" style="padding-left: 40px;">composition</a>
+						<a href="/search/byNameUse" style="padding-left: 40px">Use</a>
+						<a href="/search/byNameWeight" style="padding-left: 40px">weight</a>
+						<a href="/search/byUseState" style="padding-left: 40px">use state</a>
+					</div>
+					<a class="dropdown-btn" style="color:#f6830f"><h6>search by ayur</h6><i class="fa fa-caret-down"></i></a>
+					<div class="dropdown-container" >
+						<a href="/search/byAyurName" style="padding-left: 40px"> name</a>
+						<a href="/search/byAyurUse" style="padding-left: 40px">use</a>
+						<a href="/search/byAyurComposition" style="padding-left: 40px">composition</a>
+					</div>
+					<a class="dropdown-btn" style="color:#f6830f"><h6>Stocks</h6><i class="fa fa-caret-down"></i></a>
+					<div class="dropdown-container">
+						<a href="/stocks_medicine" style="padding-left: 40px; ">medicine</a>
+						<a href="/stocks_cosmetics" style="padding-left: 40px">cosmetics</a>
+						<a href="/stocks_healthcare" style="padding-left: 40px">health care</a>
+						
+					</div>
+					<a class="dropdown-btn" style="color:#f6830f"><h6>statastics</h6><i class="fa fa-caret-down"></i></a>
+					<div class="dropdown-container">
+						<a href="/statastics/staff" style="padding-left: 40px">staff performance</a>
+						<a href="/statastics/products" style="padding-left: 40px">products sale</a>
+						<a href="/statastics/customer" style="padding-left: 40px">customer visit</a>
+						<a href="/chart" style="padding-left: 40px">sales</a>
+						
+					</div>
+					
+					<a class="dropdown-btn" style="color:#f6830f"><h6>orders</h6><i class="fa fa-caret-down"></i></a>
+					<div class="dropdown-container">
+						<a href="/order" style="padding-left: 40px">item order </a>
+						<a href="/deliver" style="padding-left: 40px">delivery</a>
+						<a href="/place" style="padding-left: 40px">place order</a>
+					</div>
+					<img src="pha.jpg" style="height: 50vh;width:400px">
+					
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+		var dropdown = document.getElementsByClassName("dropdown-btn");
+		var i;
+		for (i = 0; i < dropdown.length; i++) {
+		dropdown[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var dropdownContent = this.nextElementSibling;
+		if (dropdownContent.style.display === "block") {
+		dropdownContent.style.display = "none";
+		} else {
+		dropdownContent.style.display = "block";
+		}
+		});
+		}
+		</script>
+		
+	</body>
+</html>

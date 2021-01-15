@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="home">
+			<div class="informationdiv">
+				<div class="forms">
+					<label>Bill id :</label>
+					<label name="bill_id"><%=bill_id%></label>
+					
+					<form action="/billing" method="post">
+						<input type="text" name="products_id" maxlength="5" required="required">
+						<input type="number" name="quantity" required="required">
+						
+						<button name="addRow">add</button>
+						<button style="margin-top: 10px;margin-left: 40px" ><a style="text-decoration-line: none;color:#54e346" href="/slip">bill_it</a></button>
+						<button style="margin-top: 10px;margin-left: 40px"> <a style="text-decoration-line: none;color:#54e346" href="/billing/cancel/<%=bill_id%>" onClick="return confirm('are you sure to cancel')">cancel</a></button>
+					</form>
+				</div>
+				<div class="tables">
+					<table class="table table-bordered table-striped table-hover">
+						<thead>
+							<tr>
+								<th>products_id</th>
+								<th>unit_price</th>
+								<th>quantity</th>
+								<th>total_price</th>
+								<th>delete</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<% invoice.forEach(function(item){%>
+							<tr>
+								<td><%=item.products_id%></td>
+								<td><%=item.unit_price%></td>
+								<td><%=item.quantity%></td>
+								<td><%=item.total_price%></td>
+								<td><a style="text-decoration-line: none;color:#54e346" href="/bill<%= item.products_id%>" onClick="return confirm('are you sure to delete')">delete</a></td>
+							</tr>
+							<%}); %>
+						</tbody>
+					</table>
+				</div>
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+		
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			
+			<div class="forms">
+				<h4>Sales</h4><br>
+				<% sales.forEach(function(item){%>
+				<h7>gross profit :    <%=item.a%> </h7><br><br>
+				<h7>net profit : <%=Math.round(item.b)%></h7>
+				<%global.pro=item.a%>
+				<%})%>
+			</div>
+			
+			
+			<div class="forms" style="padding-top: 20px">
+				<h4 style="">sold products charts</h4><br>
+				
+				<div class="" style="padding-bottom:0;margin-bottom: 0;padding-top:15px">
+					<%chart.forEach(function(item){%>
+					<div style="display: inline-block;font-size:15px;padding-right:12px" ><%=item.c%></div>
+					<%})%>
+				</div>
+				<div class="" style="margin-bottom: 0;padding-bottom: 0;padding-top:0px">
+					<%chart.forEach(function(item){%>
+					<div class="charts" style="height:<%=20+item.c%>vh;"></div>
+					<%})%>
+				</div>
+				
+				<div class="" style="padding-top: 0;margin-top: 0">
+					<%chart.forEach(function(item){%>
+					<div style="display: inline-block; writing-mode:vertical-rl;font-size:13.5px" ><%=item.products_name%></div>
+					<%})%>
+				</div>
+			</div>
+			<!-- sales on month -->
+			<div class="forms" style="padding-top: 20px">
+				<h4 style="">sales monthly</h4><br>
+				
+				<div class="" style="padding-bottom:0;margin-bottom: 0;padding-top:15px">
+					<%dat.forEach(function(item){%>
+					<div style="display: inline-block;font-size:15px;padding-right:15px" ><%=item.a%></div>
+					<%})%>
+				</div>
+				<div class="" style="margin-bottom: 0;padding-bottom: 0;padding-top:0px">
+					<%dat.forEach(function(item){%>
+					<div class="charts" style="height:<%=Math.round((item.a/pro)+10)%>vh;margin-right:50px;background-color: #ef4f4f"></div>
+					<%})%>
+				</div>
+				
+				<div class="" style="padding-top: 0;margin-top: 0;margin-right: 50px">
+					<%dat.forEach(function(item){%>
+					<div style="display: inline-block; writing-mode:vertical-rl;font-size:13.5px;margin-right: 50px" >
+					<%=item.b%>,<%=item.c%></div>
+					<%})%>
+				</div>
+			</div>
+
+
+			<!-- sales on category -->
+			<%global.medi=0,global.mede=0,global.hele=0,global.cose=0%>
+			<%med.forEach(function(item){%>
+			<% medi=medi+item.med%>
+			<%mede=mede+item.med%>
+			<%})%>
+			<%cos.forEach(function(item){%>
+			<% medi=medi+item.cos%>
+			<%cose=cose+item.cos%>
+			<%})%>
+			<%hel.forEach(function(item){%>
+			<% medi=medi+item.hel%>
+			<%hele=hele+item.hel%>
+			<%})%>
+			<%mede=(mede/medi)*100%>
+			<%cose=(cose/medi)*100%>
+			<%hele=(hele/medi)*100%>
+			
+			<div class="forms" style="padding-top: 20px">
+				<h4 style="">sales on category</h4><br>
+				
+				<div class="" style="padding-bottom:0;margin-bottom: 0;padding-top:15px">
+					
+					<div style="display: inline-block;font-size:15px;padding-right:30px" ><%=(parseFloat(mede).toFixed(2))%></div>
+					<div style="display: inline-block;font-size:15px;padding-right:30px" ><%=(parseFloat(cose).toFixed(2))%></div>
+					<div style="display: inline-block;font-size:15px;padding-right:30px" ><%=(parseFloat(hele).toFixed(2))%></div>
+				</div>
+				<div class="" style="margin-bottom: 0;padding-bottom: 0;padding-top:0px">
+					
+					<div class="charts" style="height:<%=mede%>vh;margin-right:50px;background-color: #16c79a"></div>
+					<div class="charts" style="height:<%=cose%>vh;margin-right:50px;background-color: #16c79a"></div>
+					<div class="charts" style="height:<%=hele%>vh;margin-right:50px;background-color: #16c79a"></div>
+					
+				</div>
+				
+				<div class="" style="padding-top: 0;margin-top: 0;margin-right: 50px">
+					
+					<div style="display: inline-block; writing-mode:vertical-rl;font-size:13.5px;margin-right: 50px" >
+						medicines
+					</div>
+					<div style="display: inline-block; writing-mode:vertical-rl;font-size:13.5px;margin-right: 50px" >
+						cosmeticss
+					</div>
+					<div style="display: inline-block; writing-mode:vertical-rl;font-size:13.5px;margin-right: 50px" >
+						healthcare
+					</div>
+				</div>
+			</div>
+			
+		</body>
+	</html>

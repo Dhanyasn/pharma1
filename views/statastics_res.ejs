@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+		
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+
+			<%if(info=="products"){%>
+			       <h4>most sold <%=info%></h4>
+			      <% content.forEach(function(item){%>
+			      <%=item.products_id %> 	
+			         <%=item.products_name %>
+			        <%=item.company_name%>
+			
+			     <%}); %>
+			<%}%>
+
+			<%if(info=="staff"){%>
+			<div class="forms" style="padding-top: 150px">
+			       <h4>most active <%=info%></h4>
+			      <% content.forEach(function(item){%>
+			      <%=item.staff_name %> 
+			      
+			       
+			     <%}); %>
+			    </div>
+			<%}%>
+			<%if(info=="customer"){%>
+			       <h4>number of customers visited</h4>
+			      <% content.forEach(function(item){%>
+			      <%=item.count %> 
+			      
+			       
+			     <%}); %>
+			<%}%>
+
+			
+
+			
+		</div>
+		
+	</body>
+</html>

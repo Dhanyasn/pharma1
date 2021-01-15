@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			<div class="forms">
+				<h4>return products</h4><br>
+				<form method="post" action="/return">
+				<label>invoice id</label><input style="margin-left: 10px" type="text" style="margin-left: 10px" name="bill_id" maxlength="5" required="required">>
+				<label style="margin-left: 100px">product id</label><input style="margin-left: 10px" type="text" name="products_id" maxlength="5" required="required">><br>
+				<label>quantity</label><input style="margin-left: 20px" type="number" name="quantity" required="required">>
+				<label style="margin-left: 100px">date</label><input style="margin-left: 10px" type="date" name="date" required="required">><br>
+				<button>submit</button>
+			</form>
+			</div>
+			<div class="tables">
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<td>bill id</td>
+							<td>product id</td>
+							<td>quantity</td>
+							<td> return date</td>
+						</tr>
+					</thead>
+
+					<tbody>
+						<%ret.forEach(function(item){%>
+						<tr>
+							
+							<td><%=item.bill_id%></td>
+							<td><%=item.products_id%></td>
+							<td><%=item.quantity%></td>
+							<td><%=item.date%></td>
+							
+						</tr>
+						<%})%>
+					</tbody>
+					
+				</table>
+				
+			</div>
+		</div>
+	</body>
+</html>

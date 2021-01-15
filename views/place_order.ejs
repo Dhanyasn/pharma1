@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>	</head>
+	
+</head>
+<body>
+	<%-include("header")-%>
+	
+	
+	<div class="informationdiv" >
+		<%if(info=="below"){%>
+		<div class="tables" style="padding-top: 100px">
+			<table class="table table-bordered table-striped table-hover">
+				
+				<thead>
+					<tr>
+						<td scope="col"></td>
+						<td scope="col">products id</td>
+						<td scope="col">products name</td>
+						<td scope="col">products no</td>
+						<td scope="col">company id</td>
+					</tr>
+				</thead>
+				<%place.forEach(function(item){%>
+				<tbody>
+					<tr>
+						<th scope="row">#</th>
+						<td><%=item.products_id%></td>
+						<td><%=item.products_name%></td>
+						<td><%=item.products_no%></td>
+						<td><%=item.company_id%></td>
+						<td><button><a style="text-decoration-line: none;color:#54e346" href="/place/<%=item.products_id%>">place order</a></button></td>
+					</tr>
+				</tbody>
+				<%})%>
+			</table>
+		</div>
+		<% }%>
+		<%if(info=="email"){%>
+		<div class="forms">
+			<form method="post" action="/placing_order">
+				
+				<label>products id</label><br><input type="text" name="products_id" value="<%=id%>" required="required"><br>
+				<label style="margin-top: 10px">Order id</label><br><input type="text" name="order_id" maxlength="5" required="required"><br><br>
+				<label>stock quantity</label><br><input type="number" name="quantity" value="200" required="required"><br>
+				<button style="margin-top: 10px">submit</button><br>
+			</form>
+		</div>
+		<div class="tables">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">order_id list</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<% order.forEach(function(item){%>
+					<tr>
+						<th scope="row"></th>
+						<td><%=item.order_id %> </td>
+						
+					</tr>
+					<%}); %>
+					
+				</tbody>
+			</table>
+			<% }%>
+		</div>
+		
+		
+	</body>
+</html>

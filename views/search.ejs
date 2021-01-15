@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")%>
+		<div class="informationdiv">
+			<%if(info=="byNameComposition"){%>
+			<div class="forms">
+				<form method="post" action="/search/byNameComposition" class="form-group">
+					
+					<h6>product by name </h6>
+					<label style="margin-left: 200px">product  name</label><input type="text" style="margin-left: 50px" name="products_name" maxlength="10" autocomplete="off" ><br>
+					
+					<label style="margin-left: 200px">product composition</label>
+					<input type="text" name="products_composition" autocomplete="off"><br>
+					<button type="submit" style="margin-left: 200px">submit</button>
+				</form>
+			</div>
+			<%}%>
+
+
+			<%if(info=="byNameUse"){%>
+			
+				<div class="forms">
+					<form method="post" action="/search/byNameUse" class="form-group">
+						
+						<h6>product by name </h6>
+						<label> product name</label><input style="margin-left: 10px" type="text" name="products_name" maxlength="10" autocomplete="off" ><br>
+						
+						<label>product use</label>
+						<input type="text" name="products_use" style="margin-left: 20px" autocomplete="off"><br>
+						<button type="submit" style="margin-left: 100px">submit</button>
+					</form>
+				</div>
+			
+			<%}%>
+
+
+			<%if(info=="byNameWeight"){%>
+			
+				<div class="forms">
+					<form method="post" action="/search/byNameWeight" class="form-group">
+						
+						<h6>product by name </h6>
+						<label> product name</label><input type="text" name="products_name" style="margin-left: 30px" maxlength="10" autocomplete="off" ><br>
+						
+						<label>product weight</label>
+						<input type="text" style="margin-left: 20px" name="products_weight" autocomplete="off"><br>
+						<button type="submit" style="margin-left: 100px">submit</button>
+					</form>
+				</div>
+			
+			<%}%>
+
+
+			<%if(info=="byAyurName"){%>
+			
+				<div class="forms">
+					<form method="post" action="/search/byAyurName" class="form-group">
+						
+						<h6>product by ayurvedic </h6>
+						<label> product name</label><input type="text" name="products_name" maxlength="10" autocomplete="off" ><br>
+						
+						<button type="submit"style="margin-left: 100px" >submit</button>
+					</form>
+				</div>
+			
+			<%}%>
+
+
+			<%if(info=="byAyurUse"){%>
+			
+
+				<div class="forms">
+					<form method="post" action="/search/byAyurUse" class="form-group">
+						
+						
+						<h6>product by ayurvedic </h6>
+						<label >product use</label>
+						<input type="text" style="margin-left: 10px" name="products_use" autocomplete="off"><br>
+						<button type="submit" style="margin-left: 100px;margin-top: 10px" >submit</button>
+					</form>
+				</div>
+			
+
+			<%}%>
+
+
+			<%if(info=="byAyurComposition"){%>
+			
+
+				<div class="forms">
+					<form method="post" action="/search/byAyurComposition" class="form-group">
+						
+						
+						<h6>product by ayurvedic </h6>
+						<label>product composition</label>
+						<input type="text" name="products_composition" autocomplete="off"><br>
+						<button type="submit" style="margin-left: 200px">submit</button>
+					</form>
+				</div>
+			
+
+			<%}%>
+
+
+			<%if(info=="byUseState"){%>
+			
+
+				<div class="forms">
+					<form method="post" action="/search/byUseState" class="form-group">
+						<h6>product by use </h6>
+						<label>state</label><br>
+						<label>solid</label><input type="radio" name="products_state" value="solid">
+						<label>liquid</label><input type="radio" name="products_state" value="liquid">
+						<label>gel</label><input type="radio" name="products_state" value="gel">
+						<label>syrup</label><input type="radio" name="products_state" value="syrup">
+						<label>tablet</label><input type="radio" name="products_state" value="tablet">
+						<label>powder</label><input type="radio" name="products_state" value="powder"><br>
+						<label>use</label><br>
+						<input type="text" name="products_use" autocomplete="off"><br>
+						<button type="submit" style="margin-left: 100px; margin-top: 10px" >submit</button>
+					</form>
+				</div>
+			
+
+			<%}%>
+
+
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+		<script src="float-panel.js"></script>
+	</head>
+	<body>
+		<%-include("header")-%>
+		<div class="informationdiv">
+			<div class="forms">
+				<%var grand=0%>
+				<%var today=new Date().toISOString().slice(12,20)%>
+				<%var day=new Date().toISOString().slice(0,10)%>
+				<%var discount=0%>
+				<%var price=0%>
+
+
+
+				<h4>invoice id : <%=global.bill_id%></h4>
+				<p><%=day%>, <%=today%>  </p>
+			</div>
+			<div class="tables" >
+				<table class="table table-stripped" style="margin-top: 10px">
+					<thead>
+						<tr>
+							<td>products</td>
+							<td>unit price</td>
+							<td>quantity</td>
+							<td>discount</td>
+							<td>total price</td>
+						</tr>
+					</thead>
+					<% slip.forEach(function(item){%>
+					<tbody>
+						<tr>
+							
+							<td><%=item.products_name %> </td>
+							<td><%=item.unit_price %></td>
+							<td><%=item.quantity %></td>
+							<td><%=item.dicount_amount%></td>
+							<td><%=item.total_price-(item.total_price*item.dicount_amount)%></td>
+							<%grand=grand+(item.total_price-(item.total_price*item.dicount_amount))%>
+							<% discount=discount+item.dicount_amount%>
+							<%price=item.total_price+price%>
+						</tr>
+						<%}); %>
+					</tbody>
+				</table>
+				<%member.forEach(function(mem){%>
+				  <%if(mem.customer_membership=="yes" && grand>1000 ){ %>
+				    <%grand=grand-(grand*0.01)%>
+				    <%discount=discount+0.01%>
+				    <p style="padding-left: 30px">membership discount : 0.01</p>
+				<%}%>
+				
+				<%})%>
+				<div class="forms" style="padding-top: 0px;margin-top:15px">
+                    <p>total price  :  <%=price%></p>
+                    <p>total discount :  <%=discount%></p>
+					<h4>Grand price : <%=Math.floor(grand)%></h4><br>
+					
+					<button style="width: 200px"><a href="/bill"><h6>Print</h6></a></button>
+				</div>
+			</div>
+		</body>
+	</html>

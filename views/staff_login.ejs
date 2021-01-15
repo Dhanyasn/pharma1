@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+   <%-("header")-%>
+   <div class="informationdiv">
+   	<form>
+   		<input type="text" name="staff_id">
+   		<input type="password" name="staff_pass">
+   		<button>submit</button>
+   	</form>
+   	<table class="table">
+   		<thead>
+   			<tr>
+   				<td>staff_id</td>
+   				<td>staff_pass</td>
+   			</tr>
+   		</thead>
+   		<tbody>
+   			<tr>
+   			<%pass.forEach(function(pass){%>
+   			<td><%=pass.user_id%></td>
+   			<td><%=pass.user_pass%></td>
+   		</tr>
+   		</tbody>
+   	</table>
+   </div>
+</body>
+</html>
